@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html class="notInited">
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <style id="jsbin-css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html.notInited {
+            visibility: hidden;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        img {
+            vertical-align: middle;
+        }
+        
+        ul,
+        ol {
+            list-style: none;
+        }
+        
+        body {
+            font-family: "proxima nova", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+            font-size: 18px;
+        }
+        
+        .siteWrapped {
+            max-width: 1040px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
+        
+        .topbarWrapper {
+            background: #111;
+            transition: all 0.5s;
+            transform: translateY(0%);
+        }
+        
+        .topbarWrapper.hide {
+            transform: translateY(-100%);
+        }
+        
+        #topbar> ol.sections {
+            display: flex;
+        }
+        
+        #topbar> ol.sections> li {
+            margin-left: 18px;
+            margin-right: 18px;
+        }
+        
+        #topbar> ol.sections> li> a.selected,
+        #topbar> ol.sections> li> a:hover {
+            opacity: 0.3;
+        }
+        
+        #topbar> ul {
+            display: flex;
+        }
+        
+        #topbar> ul> li {
+            margin-left: 18px;
+            margin-right: 18px;
+        }
+        
+        #topbar .logo {
+            vertical-align: middle;
+        }
+        
+        #topbar .logoContainer {
+            height: 92px;
+            width: 62px;
+        }
+        
+        #topbar .mediaLinks li img {
+            vertical-align: middle;
+        }
+        
+        #topbar .mediaLinks li {
+            height: 32px;
+            width: 32px;
+        }
+        
+        @media (max-width: 1000px) {
+            #topbar .mediaLinks {
+                display: none;
+            }
+        }
+        
+        .summary .aboutMe {
+            margin-top: 55px;
+            position: relative;
+            color: #111;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .summary .aboutMe:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .summary .aboutMe .text {
+            margin-right: 610px;
+            margin-top: 34px;
+            transform: translateX(0%);
+            transition: all 0.5s;
+        }
+        
+        .summary .aboutMe .text.hide {
+            transform: translateX(-100%);
+        }
+        
+        .summary .aboutMe .text h1 {
+            font-size: 70px;
+            font-weight: bold;
+        }
+        
+        .summary .aboutMe .text p {
+            font-size: 26px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .summary .aboutMe .text p small {
+            font-size: 16px;
+        }
+        
+        .summary .aboutMe .pic {
+            width: 590px;
+            float: right;
+            width: 590px;
+            height: 440px;
+            transform: translateX(0%);
+            transition: all 0.5s;
+        }
+        
+        .summary .aboutMe .pic.hide {
+            transform: translateX(100%);
+        }
+        
+        .myPhotos {
+            margin: 18px -14px;
+        }
+        
+        .myPhotos:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .myPhotos> li {
+            float: left;
+            width: 150px;
+            height: 85px;
+            margin: 0 14px;
+            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.4);
+            padding: 5px;
+            transform: translateY(0%);
+            transition: all 1s;
+        }
+        
+        .myPhotos> li:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .myPhotos> li:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+        
+        .myPhotos> li:nth-child(4) {
+            transition-delay: 0.6s;
+        }
+        
+        .myPhotos> li:nth-child(5) {
+            transition-delay: 0.8s;
+        }
+        
+        .myPhotos> li:nth-child(6) {
+            transition-delay: 1.0s;
+        }
+        
+        .myPhotos.hide> li {
+            transform: translateY(200%);
+        }
+        .section2{
+            position: relative;
+        }
+        .section2 .text1 {
+            position: absolute;
+            left: 0;
+            top:0;
+            width: 200px;
+        }
+        .section2 .text2 {
+            position: absolute;
+            right: 0;
+            top:0;
+            width: 200px;
+        }
+        .section2 .chart{
+            margin-left: 200px;
+            margin-right: 200px;
+            text-align: center;
+        }
+        .summaryWrapper{
+            background: #fff;
+                padding-bottom: 55px;
+        }
+        .section2Wrapper{
+            padding-top: 100px;
+            padding-bottom: 100px;
+            background: #fafafa;
+            box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+        }
+        .skillsWrapper{
+        }
+        .skills h2{
+            text-align: right;
+        }
+        .skills .rows > .row{
+            border-top: 1px dotted #ddd;
+            border-left: 1px solid #ddd;
+            margin-left: 70px;
+            height: 110px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="topbarWrapper">
+        <nav id=topbar class=siteWrapped>
+            <a href="#" class=logoContainer><img class=logo src="https://placeholdit.imgix.net/~text?txtsize=20&txt=logo&w=62&h=92"
+                    alt=""></a>
+            <ol class=sections>
+                <li><a href="#">about</a></li>
+                <li><a href="#">featured</a></li>
+                <li><a href="#">portfolio</a></li>
+                <li><a href="#">blog</a></li>
+                <li><a href="#">contact</a></li>
+            </ol>
+
+            <ul class=mediaLinks>
+                <li>
+                    <a href=""><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=a&w=32&h=32"
+                            alt=""></a>
+                </li>
+                <li>
+                    <a href=""><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=a&w=32&h=32"
+                            alt=""></a>
+                </li>
+                <li>
+                    <a href=""><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=a&w=32&h=32"
+                            alt=""></a>
+                </li>
+                <li>
+                    <a href=""><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=a&w=32&h=32"
+                            alt=""></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="summaryWrapper">
+        <section class="summary siteWrapped">
+            <div class=aboutMe>
+                <div class="pic">
+                    <img src="http://www.adhamdannaway.com/wp-content/themes/ad/images/about-adham-dannaway.jpg"
+                        alt="我的大头">
+                </div>
+                <div class="text">
+                    <h1>about me</h1>
+                    <p>
+                        I'm a UX/UI Designer and Front End Developer from Sydney, Australia.
+
+                    </p>
+                    <p>
+                        <small>
+                        I enjoy turning complex problems into simple, beautiful and intuitive interface
+                        designs. When I'm not coding or pushing pixels, you'll find
+                        me in the gym or on the court shooting hoops.
+                        </small>
+                    </p>
+                </div>
+            </div>
+            <ul class="myPhotos">
+                <li><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=slide&w=140&h=75"
+                        alt=""></li>
+                <li><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=slide&w=140&h=75"
+                        alt=""></li>
+                <li><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=slide&w=140&h=75"
+                        alt=""></li>
+                <li><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=slide&w=140&h=75"
+                        alt=""></li>
+                <li><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=slide&w=140&h=75"
+                        alt=""></li>
+                <li><img src="https://placeholdit.imgix.net/~text?txtsize=20&txt=slide&w=140&h=75"
+                        alt=""></li>
+            </ul>
+        </section>
+    </div>
+    <div class="section2Wrapper">
+        <section class="section2 siteWrapped">
+            <div class="text1">
+                <h2>Part Designer</h2>
+
+                <ul>
+                    <li>
+                        User Interface Design
+                    </li>
+                    <li>
+                        User Experience Design
+                    </li>
+                    <li>
+                        Interaction Design
+                    </li>
+                    <li>
+                        Website Design
+                    </li>
+                    <li>
+                        Branding / Logo Design
+                    </li>
+                </ul>
+
+            </div>
+            <div class="text2">
+
+                <h2>Part Coder</h2>
+
+                <ul>
+                    <li>
+                        Front End Development
+                    </li>
+                    <li>
+                        HTML
+                    </li>
+                    <li>
+                        CSS / SASS
+                    </li>
+                    <li>
+                        JavaScript
+                    </li>
+                    <li>
+                        Swearing at computer
+                    </li>
+                </ul>
+            </div>
+            <div class="chart">
+                <img src="http://www.adhamdannaway.com/wp-content/themes/ad/images/pie-chart.png" alt="">
+            </div>
+        </section>
+    </div>
+    <div class="skillsWrapper">
+        <div class="skills siteWrapped">
+            <h2>My technical skills</h2>
+            <div class="rows">
+                <div class="row row1">
+                    Jedi
+                </div>
+                <div class="row row2">
+                    Ninja
+                </div>
+                <div class="row row3">
+                    Geek
+                </div>
+                <div class="row row4">
+                    Newbie
+                </div>
+            </div>
+            <div class="bars">
+                <div class="bar1">
+                    <p><strong>95%</strong></p>
+                    <p>HTML</p>
+                </div>
+                <div class="bar2">
+                    <p><strong>95%</strong></p>
+                    <p>CSS</p>
+                </div>
+                <div class="bar3">
+                    <p><strong>95%</strong></p>
+                    <p>JavaScript</p>
+                </div>
+                <div class="bar4">
+                    <p><strong>95%</strong></p>
+                    <p>jQuery</p>
+                </div>
+                <div class="bar5">
+                    <p><strong>95%</strong></p>
+                    <p>Photoshop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./jquery-2.1.1.min.js"></script>
+    <script>
+        $(function()
+        {
+            $('html').removeClass('notInited')
+            $(
+                    '.topbarWrapper, .summary .aboutMe .text, .summary .aboutMe .pic, .myPhotos'
+                )
+                .hide().addClass('hide')
+            setTimeout(function()
+            {
+                $(
+                        '.topbarWrapper, .summary .aboutMe .text, .summary .aboutMe .pic, .myPhotos'
+                    )
+                    .show()
+            }, 100)
+            setTimeout(function()
+            {
+                $(
+                        '.topbarWrapper, .summary .aboutMe .text, .summary .aboutMe .pic, .myPhotos'
+                    )
+                    .removeClass('hide')
+            }, 150)
+        })
+    </script>
+</body>
+
+</html>
